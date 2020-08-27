@@ -80,6 +80,18 @@ namespace fpvc::columnarbatch {
 
         SchemaPtr const schema() { return schema_; };
 
+        const int64_t *timestampsArray() { return timestamps_; }
+
+        const uint8_t *flagsArray() { return flags_; }
+        
+        const uint32_t *previewOffsetsArray() { return preview_offsets_; }
+        const uint32_t *highPlaneOffsetsArray() { return high_plane_offsets_; }
+        const uint32_t *lowPlaneOffsetsArray() { return low_plane_offsets_; }
+
+        const uint8_t *previewDataArray() { return preview_; }
+        const uint8_t *highPlaneDataArray() { return high_plane_; }
+        const uint8_t *lowPlaneDataArray() { return low_plane_; }
+
     private:
         SchemaPtr schema_;
         size_t batch_size_;
