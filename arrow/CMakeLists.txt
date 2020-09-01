@@ -24,7 +24,7 @@ target_link_libraries(fpv_arrow_encoder PRIVATE fusion_power_video arrow pthread
 set_target_properties(fpv_arrow_encoder PROPERTIES PUBLIC_HEADER "arrow_encoder.h")
 INSTALL(TARGETS fpv_arrow_encoder
         ARCHIVE DESTINATION lib 
-        PUBLIC_HEADER DESTINATION include
+        PUBLIC_HEADER DESTINATION include/arrow
 )
 
 foreach (executable IN ITEMS arrow_encoder_test)

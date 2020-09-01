@@ -23,7 +23,7 @@ target_link_libraries(fpv_columnar_batch PRIVATE fusion_power_video pthread PkgC
 set_target_properties(fpv_columnar_batch PROPERTIES PUBLIC_HEADER "columnar_batch.h;columnar_batch_encoder.h;columnar_batch_decoder.h")
 INSTALL(TARGETS fpv_columnar_batch
         ARCHIVE DESTINATION lib 
-        PUBLIC_HEADER DESTINATION include
+        PUBLIC_HEADER DESTINATION include/columnar_batch
 )
 
 foreach (executable IN ITEMS columnar_batch_encoder_test columnar_batch_decoder_test)
