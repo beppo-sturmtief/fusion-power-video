@@ -91,7 +91,7 @@ namespace fpvc::columnarbatch {
 
             {
                 std::unique_lock<std::mutex> lock(this->queue_mutex_);
-                this->queue_condition_.wait(lock, [=]{ return closing_ || !frame_queue_.empty(); });
+                this->queue_condition_.wait(lock, [&]{ return closing_ || !frame_queue_.empty(); });
                 if (!frame_queue_.empty()) {
                     frame_future = std::move(frame_queue_.front());
                     frame_queue_.pop_front();
