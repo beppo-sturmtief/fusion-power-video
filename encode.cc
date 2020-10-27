@@ -67,7 +67,9 @@ int main(int argc, char* argv[]) {
  // Rotate through multiple memory buffers for the input image such that all
   // threads / queued tasks have their own buffer.
   size_t num_buffers = encoder.MaxQueued();
-  std::vector<uint16_t> buffers[num_buffers];
+
+  std::vector<uint16_t> *buffers = new std::vector<uint16_t>[num_buffers];
+
   for (size_t i = 0; i < num_buffers; i++) {
     buffers[i].resize(xsize * ysize);
   }
@@ -94,4 +96,5 @@ int main(int argc, char* argv[]) {
   }
 
   encoder.Finish(WriteFunction, nullptr);
+  delete[] buffers;
 }

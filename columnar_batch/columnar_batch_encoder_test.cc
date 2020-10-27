@@ -1,3 +1,4 @@
+#include <string>
 #include <iostream>
 #include <memory>
 #include "columnar_batch_encoder.h"

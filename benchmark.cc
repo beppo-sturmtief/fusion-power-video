@@ -14,7 +14,7 @@
 
 // Benchmark and roundtrip test
 
-#include <sys/time.h>
+#include <chrono>
 
 #include <fstream>
 #include <iostream>
@@ -50,9 +50,8 @@ std::vector<unsigned char> LoadFile(const std::string& filename,
 }
 
 double GetTime() {
-  struct timeval tv;
-  gettimeofday(&tv, NULL);
-  return tv.tv_sec + tv.tv_usec * 1e-6;
+  auto current_time = std::chrono::system_clock::now();
+  return std::chrono::duration<double>(current_time.time_since_epoch()).count();
 }
 
 struct BenchmarkTime {

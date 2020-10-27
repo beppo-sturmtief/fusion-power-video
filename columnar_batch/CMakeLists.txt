@@ -18,7 +18,7 @@ find_package(PkgConfig REQUIRED)
 #pkg_check_modules(Brotli REQUIRED IMPORTED_TARGET libbrotlienc libbrotlidec)
 
 add_library(fpv_columnar_batch STATIC columnar_batch.h columnar_batch.cc columnar_batch_encoder.h columnar_batch_encoder.cc columnar_batch_decoder.h columnar_batch_decoder.cc)
-target_link_libraries(fpv_columnar_batch PRIVATE fusion_power_video pthread PkgConfig::Brotli)
+target_link_libraries(fpv_columnar_batch PRIVATE fusion_power_video PkgConfig::Brotli Threads::Threads)
 
 set_target_properties(fpv_columnar_batch PROPERTIES PUBLIC_HEADER "columnar_batch.h;columnar_batch_encoder.h;columnar_batch_decoder.h")
 INSTALL(TARGETS fpv_columnar_batch

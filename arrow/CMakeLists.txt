@@ -19,7 +19,7 @@ pkg_check_modules(Brotli REQUIRED IMPORTED_TARGET libbrotlienc libbrotlidec)
 pkg_check_modules(Arrow REQUIRED IMPORTED_TARGET arrow)
 
 add_library(fpv_arrow_encoder STATIC arrow_encoder.h arrow_encoder.cc)
-target_link_libraries(fpv_arrow_encoder PRIVATE fusion_power_video arrow pthread PkgConfig::Brotli)
+target_link_libraries(fpv_arrow_encoder PRIVATE fusion_power_video arrow PkgConfig::Brotli Threads::Threads)
 
 set_target_properties(fpv_arrow_encoder PROPERTIES PUBLIC_HEADER "arrow_encoder.h")
 INSTALL(TARGETS fpv_arrow_encoder

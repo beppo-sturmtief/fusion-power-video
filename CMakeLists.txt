@@ -15,14 +15,16 @@
 cmake_minimum_required(VERSION 3.6)
 
 project(FusionPowerVideo CXX)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
+
+find_package(Threads REQUIRED)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(Brotli REQUIRED IMPORTED_TARGET libbrotlienc libbrotlidec)
 
 add_library(fusion_power_video STATIC fusion_power_video.h fusion_power_video.cc)
-target_link_libraries(fusion_power_video PRIVATE pthread PkgConfig::Brotli)
+target_link_libraries(fusion_power_video PRIVATE PkgConfig::Brotli Threads::Threads)
 
 set_target_properties(fusion_power_video PROPERTIES PUBLIC_HEADER "fusion_power_video.h")
 INSTALL(TARGETS fusion_power_video
